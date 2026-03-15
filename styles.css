@@ -745,7 +745,7 @@ body {
   transform: translate(-50%, -50%);
   will-change: transform;
   box-shadow: 0 0 12px rgba(108, 99, 255, 0.4);
-  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
 /* Cursor hover state */
