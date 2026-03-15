@@ -302,18 +302,31 @@ if (contactForm) {
     }, 4000);
   }
 
+  emailjs.init('xS28c-a_iQua924-z');
+
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     submitBtn.classList.add('btn--loading');
     submitBtn.disabled = true;
 
-    // Use standard setTimeout instead of async to avoid compatibility issues
-    setTimeout(() => {
-      showToast('Message sent successfully!');
-      contactForm.reset();
-      submitBtn.classList.remove('btn--loading');
-      submitBtn.disabled = false;
-    }, 1500);
+    const templateParams = {
+      user_name:  document.getElementById('name').value,
+      user_email: document.getElementById('email').value,
+      message:    document.getElementById('message').value,
+    };
+
+    emailjs.send('service_hv96ghr', 'template_6bidm5e', templateParams)
+      .then(() => {
+        showToast('Message sent successfully!');
+        contactForm.reset();
+      })
+      .catch(() => {
+        showToast('Something went wrong. Please try again.', 'error');
+      })
+      .finally(() => {
+        submitBtn.classList.remove('btn--loading');
+        submitBtn.disabled = false;
+      });
   });
 }
 
