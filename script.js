@@ -517,3 +517,55 @@ if (modal) {
     }
   });
 })();
+
+// === TOUCH RIPPLE EFFECT (Mobile) ===
+(function () {
+  // Only run on touch devices
+  if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) return;
+
+  let holdTimer;
+
+  document.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    const x = touch.clientX;
+    const y = touch.clientY;
+
+    // Spawn primary tap ripple
+    const ripple = document.createElement('div');
+    ripple.id = 'ripple-' + Date.now();
+    ripple.className = 'touch-ripple';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    document.body.appendChild(ripple);
+
+    // Clean up primary ripple
+    setTimeout(() => {
+      if (ripple.parentNode) ripple.remove();
+    }, 650);
+
+    // Set up long-press bonus ripple
+    holdTimer = setTimeout(() => {
+      const holdRipple = document.createElement('div');
+      holdRipple.id = 'ripple-hold-' + Date.now();
+      holdRipple.className = 'touch-ripple-hold';
+      holdRipple.style.left = x + 'px';
+      holdRipple.style.top = y + 'px';
+      document.body.appendChild(holdRipple);
+
+      // Clean up hold ripple
+      setTimeout(() => {
+        if (holdRipple.parentNode) holdRipple.remove();
+      }, 950);
+    }, 400);
+
+  }, { passive: true });
+
+  // Clear long-press timer if they move or lift finger
+  document.addEventListener('touchmove', () => {
+    clearTimeout(holdTimer);
+  }, { passive: true });
+
+  document.addEventListener('touchend', () => {
+    clearTimeout(holdTimer);
+  });
+})();
