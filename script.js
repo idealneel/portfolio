@@ -589,7 +589,9 @@ if (modal) {
     ring.style.opacity = '0';
   });
   document.addEventListener('mouseenter', () => {
-    dot.style.opacity  = '1';
-    ring.style.opacity = '1';
+    if (started) {
+      dot.style.opacity  = '1';
+      ring.style.opacity = '1';
+    }
   });
 })();
