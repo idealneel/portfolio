@@ -139,84 +139,34 @@
 <p class="text-[var(--text-muted)] text-lg max-w-2xl">Explore a curated collection of my latest projects, technical experiments, and professional certifications.</p>
 </header>
 <!-- END: Header -->
-<!-- BEGIN: Project Filters -->
-<section class="max-w-5xl mx-auto mb-8" id="projects-section">
-
-<div class="scroll-section-wrapper" id="projects-carousel-wrapper">
-  <button class="scroll-arrow scroll-arrow-left"
-          aria-label="Scroll projects left">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2.5"
-         stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"></polyline>
-    </svg>
-  </button>
-
-  <div class="carousel-outer">
-    <div class="flex gap-6 overflow-x-auto snap-x pb-8 px-2 pt-6 -mt-6 proj-carousel cert-carousel" data-purpose="project-scroll">
-  
-      <!-- Real project card -->
-      <div class="proj-carousel-track cert-carousel-track">
-  
-      <article class="proj-card-real cert-real project-card snap-item glass glass-rounded flex flex-col overflow-hidden min-w-[280px] md:min-w-[320px]" data-category="web">
-        <div class="h-48 relative overflow-hidden flex items-center justify-center" style="background: linear-gradient(135deg, rgba(108,99,255,0.30), rgba(255,101,132,0.20));">
-          <span style="font-size:36px;">🚀</span>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <span class="text-[10px] uppercase tracking-widest text-[var(--accent-1)] font-bold mb-2 roboto-mono">COMING SOON</span>
-          <h3 class="text-xl font-bold mb-3 text-[var(--text)]">First Project</h3>
-          <p class="text-[var(--text-muted)] text-sm mb-6 flex-1">Something exciting is in the works. Check back soon.</p>
-          <button class="w-full mt-auto glass px-6 py-2.5 rounded-full font-semibold text-sm text-[var(--text-muted)] border border-[var(--glass-border)] opacity-50 cursor-not-allowed" disabled>In Progress</button>
-        </div>
-      </article>
+<!-- BEGIN: My Work Grid -->
+<section class="max-w-5xl mx-auto mb-24" id="projects-section">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    <!-- Real project card -->
+    <article class="proj-card-real cert-real project-card glass glass-rounded flex flex-col overflow-hidden" data-category="web">
+      <div class="h-48 relative overflow-hidden flex items-center justify-center" style="background: linear-gradient(135deg, rgba(108,99,255,0.30), rgba(255,101,132,0.20));">
+        <span style="font-size:36px;">🚀</span>
       </div>
-    </div>
-  </div>
-
-  <button class="scroll-arrow scroll-arrow-right"
-          aria-label="Scroll projects right">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2.5"
-         stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </button>
-</div>
-</section>
-<!-- BEGIN: Certificates -->
-<section class="mt-24 mb-12 max-w-5xl mx-auto" id="certificates-section">
-<h2 class="text-3xl font-extrabold mb-12 flex items-center gap-4">
-    <span class="w-12 h-[2px] bg-[var(--accent-1)]"></span>
-    PROFESSIONAL CERTIFICATIONS
-  </h2>
-
-<div class="scroll-section-wrapper">
-    <button class="scroll-arrow scroll-arrow-left" aria-label="Scroll left">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-    </button>
-    <div class="carousel-outer">
-      <div class="flex gap-6 overflow-x-auto snap-x pb-8 px-2 pt-6 -mt-6 cert-carousel" data-purpose="certificate-scroll">
-        <div class="cert-carousel-track">
-          <div class="cert-card cert-real min-w-[280px] md:min-w-[320px] snap-item glass glass-rounded p-6" style="border-left: 4px solid var(--accent-1);">
-            <div class="text-xs text-[var(--accent-1)] font-bold mb-2 roboto-mono tracking-widest">COMING SOON</div>
-            <h4 class="text-lg font-bold mb-2 text-[var(--text)]">First Certificate</h4>
-            <p class="text-[var(--text-muted)] text-sm mb-4">Currently working towards earning certifications. Check back soon.</p>
-            <div class="text-[10px] text-[var(--text-muted)]">Issued: —</div>
-          </div>
-  
-        </div>
+      <div class="p-6 flex flex-col flex-1">
+        <span class="text-[10px] uppercase tracking-widest text-[var(--accent-1)] font-bold mb-2 roboto-mono">COMING SOON</span>
+        <h3 class="text-xl font-bold mb-3 text-[var(--text)]">First Project</h3>
+        <p class="text-[var(--text-muted)] text-sm mb-6 flex-1">Something exciting is in the works. Check back soon.</p>
+        <button class="w-full mt-auto glass px-6 py-2.5 rounded-full font-semibold text-sm text-[var(--text-muted)] border border-[var(--glass-border)] opacity-50 cursor-not-allowed" disabled>In Progress</button>
       </div>
+    </article>
+
+    <!-- Real certificate card -->
+    <div class="cert-card cert-real glass glass-rounded p-6 flex flex-col" style="border-left: 4px solid var(--accent-1);">
+      <div class="text-xs text-[var(--accent-1)] font-bold mb-2 roboto-mono tracking-widest">COMING SOON</div>
+      <h4 class="text-lg font-bold mb-2 text-[var(--text)]">First Certificate</h4>
+      <p class="text-[var(--text-muted)] text-sm mb-4">Currently working towards earning certifications. Check back soon.</p>
+      <div class="text-[10px] text-[var(--text-muted)] mt-auto">Issued: —</div>
     </div>
-    <button class="scroll-arrow scroll-arrow-right" aria-label="Scroll right">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
+
   </div>
 </section>
-<!-- END: Certificates -->
+<!-- END: My Work Grid -->
 <!-- BEGIN: Footer -->
 <footer class="py-6 border-t border-[var(--divider)] text-center relative z-10">
   <p class="text-[var(--text-muted)] text-sm">
