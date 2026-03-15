@@ -439,8 +439,8 @@ if (modal) {
 
   // Smooth ring follow with lerp
   function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
+    ringX += (mouseX - ringX) * 0.2;
+    ringY += (mouseY - ringY) * 0.2;
     ring.style.left = ringX + 'px';
     ring.style.top  = ringY + 'px';
     rafId = requestAnimationFrame(animateRing);
