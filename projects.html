@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projects | Neel Shinde</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen">
+<div id="skeleton-loader" aria-hidden="true">
+  <!-- Skeleton Navbar -->
+  <div class="skel-nav">
+    <div class="skel skel-nav-logo"></div>
+    <div class="skel-nav-links">
+      <div class="skel skel-nav-link"></div>
+      <div class="skel skel-nav-link"></div>
+      <div class="skel skel-nav-link"></div>
+    </div>
+  </div>
+  <!-- Skeleton Projects Grid -->
+  <div class="skel-body">
+    <div class="skel skel-heading"></div>
+    <div class="skel skel-subheading"></div>
+    <div class="skel-filter-row">
+      <div class="skel skel-filter-tab"></div>
+      <div class="skel skel-filter-tab"></div>
+      <div class="skel skel-filter-tab"></div>
+      <div class="skel skel-filter-tab"></div>
+    </div>
+    <div class="skel-grid">
+      <div class="skel-card">
+        <div class="skel skel-card-thumb"></div>
+        <div class="skel-card-body">
+          <div class="skel skel-card-tag"></div>
+          <div class="skel skel-card-title"></div>
+          <div class="skel skel-card-desc1"></div>
+          <div class="skel skel-card-desc2"></div>
+          <div class="skel skel-card-btn"></div>
+        </div>
+      </div>
+      <div class="skel-card">
+        <div class="skel skel-card-thumb"></div>
+        <div class="skel-card-body">
+          <div class="skel skel-card-tag"></div>
+          <div class="skel skel-card-title"></div>
+          <div class="skel skel-card-desc1"></div>
+          <div class="skel skel-card-desc2"></div>
+          <div class="skel skel-card-btn"></div>
+        </div>
+      </div>
+      <div class="skel-card">
+        <div class="skel skel-card-thumb"></div>
+        <div class="skel-card-body">
+          <div class="skel skel-card-tag"></div>
+          <div class="skel skel-card-title"></div>
+          <div class="skel skel-card-desc1"></div>
+          <div class="skel skel-card-desc2"></div>
+          <div class="skel skel-card-btn"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BEGIN: Navigation -->
+<nav class="fixed top-0 left-0 right-0 h-[60px] glass z-50 flex items-center justify-between px-6" id="top-nav">
+<div class="font-bold text-xl tracking-tighter">NS<span class="text-[var(--accent-1)]">.</span></div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex gap-8 items-center overflow-visible pb-1">
+<a class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors" href="index.html">Home</a>
+<a class="text-sm font-semibold text-[var(--accent-1)] border-b-2 border-[var(--accent-1)]" href="projects.html">Projects</a>
+<a class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors" href="contact.html">Contact</a>
+</div>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Menu" class="md:hidden p-2 text-[var(--text)]" id="mobile-menu-btn">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</nav>
+<!-- Mobile Dropdown Menu -->
+<div id="mobile-menu" class="fixed top-[60px] left-0 right-0 glass z-[60] overflow-hidden transition-all duration-300 max-h-0 md:hidden">
+  <div class="flex flex-col py-2">
+    <a href="index.html" class="px-6 py-3.5 text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors border-l-4 border-transparent">Home</a>
+    <a href="projects.html" class="px-6 py-3.5 text-sm font-semibold text-[var(--accent-1)] border-l-4 border-[var(--accent-1)] active-mobile">Projects</a>
+    <a href="contact.html" class="px-6 py-3.5 text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors border-l-4 border-transparent">Contact</a>
+  </div>
+</div>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] hidden md:hidden"></div>
+<!-- END: Navigation -->
+<!-- BEGIN: Main Layout Wrapper -->
+
+<!-- BEGIN: Sidebar -->
+<main class="pt-[100px] px-6 lg:px-16 relative z-10">
+<!-- Animated Background Orbs -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+  <div class="bg-orb top-[10%] left-[20%] w-[30vw] h-[30vw] opacity-20" style="background: radial-gradient(circle, var(--accent-1) 0%, transparent 70%); animation: orbDrift 15s ease-in-out infinite;"></div>
+  <div class="bg-orb bottom-[20%] right-[10%] w-[40vw] h-[40vw] opacity-15" style="background: radial-gradient(circle, var(--accent-2) 0%, transparent 70%); animation: orbDrift 12s ease-in-out infinite reverse;"></div>
+</div>
+</div>
+<!-- BEGIN: Header -->
+<header class="mb-12 max-w-5xl mx-auto" data-purpose="page-header">
+<h1 class="text-4xl lg:text-6xl font-black gradient-text mb-4">My Work</h1>
+<p class="text-[var(--text-muted)] text-lg max-w-2xl">Explore a curated collection of my latest projects, technical experiments, and professional certifications.</p>
+</header>
+<!-- END: Header -->
+<!-- BEGIN: Project Filters -->
+<section class="max-w-5xl mx-auto mb-8" id="projects-section">
+
+<div class="scroll-section-wrapper" id="projects-carousel-wrapper">
+  <button class="scroll-arrow scroll-arrow-left"
+          aria-label="Scroll projects left">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+
+  <div class="carousel-outer">
+    <div class="flex gap-6 overflow-x-auto snap-x pb-8 px-2 pt-6 -mt-6 proj-carousel cert-carousel" data-purpose="project-scroll">
+  
+      <!-- Real project card -->
+      <div class="proj-carousel-track cert-carousel-track">
+  
+      <article class="cert-ghost project-card snap-item glass glass-rounded flex flex-col overflow-hidden min-w-[280px] md:min-w-[320px]" style="pointer-events:none; background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(255,101,132,0.08));">
+        <div class="h-48"></div>
+        <div class="p-6 flex flex-col flex-1 gap-3">
+          <div class="skel" style="width:60px;height:10px;"></div>
+          <div class="skel" style="width:75%;height:18px;"></div>
+          <div class="skel" style="width:100%;height:12px;"></div>
+          <div class="skel" style="width:85%;height:12px;"></div>
+          <div class="skel" style="width:100%;height:36px;border-radius:10px;margin-top:8px;"></div>
+        </div>
+      </article>
+  
+      <article class="cert-ghost project-card snap-item glass glass-rounded flex flex-col overflow-hidden min-w-[280px] md:min-w-[320px]" style="pointer-events:none; background: linear-gradient(135deg, rgba(255,101,132,0.12), rgba(108,99,255,0.08));">
+        <div class="h-48"></div>
+        <div class="p-6 flex flex-col flex-1 gap-3">
+          <div class="skel" style="width:60px;height:10px;"></div>
+          <div class="skel" style="width:75%;height:18px;"></div>
+          <div class="skel" style="width:100%;height:12px;"></div>
+          <div class="skel" style="width:85%;height:12px;"></div>
+          <div class="skel" style="width:100%;height:36px;border-radius:10px;margin-top:8px;"></div>
+        </div>
+      </article>
+  
+      <article class="cert-ghost project-card snap-item glass glass-rounded flex flex-col overflow-hidden min-w-[280px] md:min-w-[320px]" style="pointer-events:none; background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(255,101,132,0.12));">
+        <div class="h-48"></div>
+        <div class="p-6 flex flex-col flex-1 gap-3">
+          <div class="skel" style="width:60px;height:10px;"></div>
+          <div class="skel" style="width:75%;height:18px;"></div>
+          <div class="skel" style="width:100%;height:12px;"></div>
+          <div class="skel" style="width:85%;height:12px;"></div>
+          <div class="skel" style="width:100%;height:36px;border-radius:10px;margin-top:8px;"></div>
+        </div>
+      </article>
+  
+      <article class="proj-card-real cert-real project-card snap-item glass glass-rounded flex flex-col overflow-hidden min-w-[280px] md:min-w-[320px]" data-category="web">
+        <div class="h-48 relative overflow-hidden flex items-center justify-center" style="background: linear-gradient(135deg, rgba(108,99,255,0.30), rgba(255,101,132,0.20));">
+          <span style="font-size:36px;">🚀</span>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <span class="text-[10px] uppercase tracking-widest text-[var(--accent-1)] font-bold mb-2 roboto-mono">COMING SOON</span>
+          <h3 class="text-xl font-bold mb-3 text-[var(--text)]">First Project</h3>
+          <p class="text-[var(--text-muted)] text-sm mb-6 flex-1">Something exciting is in the works. Check back soon.</p>
+          <button class="w-full mt-auto glass px-6 py-2.5 rounded-full font-semibold text-sm text-[var(--text-muted)] border border-[var(--glass-border)] opacity-50 cursor-not-allowed" disabled>In Progress</button>
+        </div>
+      </article>
+  
+      <article class="cert-ghost project-card snap-item glass glass-rounded flex flex-col overflow-hidden min-w-[280px] md:min-w-[320px]" style="pointer-events:none; background: linear-gradient(135deg, rgba(255,101,132,0.08), rgba(108,99,255,0.12));">
+        <div class="h-48"></div>
+        <div class="p-6 flex flex-col flex-1 gap-3">
+          <div class="skel" style="width:60px;height:10px;"></div>
+          <div class="skel" style="width:75%;height:18px;"></div>
+          <div class="skel" style="width:100%;height:12px;"></div>
+          <div class="skel" style="width:85%;height:12px;"></div>
+          <div class="skel" style="width:100%;height:36px;border-radius:10px;margin-top:8px;"></div>
+        </div>
+      </article>
+  
+      <article class="cert-ghost project-card snap-item glass glass-rounded flex flex-col overflow-hidden min-w-[280px] md:min-w-[320px]" style="pointer-events:none; background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(255,101,132,0.08));">
+        <div class="h-48"></div>
+        <div class="p-6 flex flex-col flex-1 gap-3">
+          <div class="skel" style="width:60px;height:10px;"></div>
+          <div class="skel" style="width:75%;height:18px;"></div>
+          <div class="skel" style="width:100%;height:12px;"></div>
+          <div class="skel" style="width:85%;height:12px;"></div>
+          <div class="skel" style="width:100%;height:36px;border-radius:10px;margin-top:8px;"></div>
+        </div>
+      </article>
+  
+      <article class="cert-ghost project-card snap-item glass glass-rounded flex flex-col overflow-hidden min-w-[280px] md:min-w-[320px]" style="pointer-events:none; background: linear-gradient(135deg, rgba(255,101,132,0.12), rgba(108,99,255,0.08));">
+        <div class="h-48"></div>
+        <div class="p-6 flex flex-col flex-1 gap-3">
+          <div class="skel" style="width:60px;height:10px;"></div>
+          <div class="skel" style="width:75%;height:18px;"></div>
+          <div class="skel" style="width:100%;height:12px;"></div>
+          <div class="skel" style="width:85%;height:12px;"></div>
+          <div class="skel" style="width:100%;height:36px;border-radius:10px;margin-top:8px;"></div>
+        </div>
+      </article>
+  
+    </div>
+    </div>
+  </div>
+
+  <button class="scroll-arrow scroll-arrow-right"
+          aria-label="Scroll projects right">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+</div>
+</section>
+<!-- BEGIN: Certificates -->
+<section class="mt-24 mb-12 max-w-5xl mx-auto" id="certificates-section">
+<h2 class="text-3xl font-extrabold mb-12 flex items-center gap-4">
+    <span class="w-12 h-[2px] bg-[var(--accent-1)]"></span>
+    PROFESSIONAL CERTIFICATIONS
+  </h2>
+
+<div class="scroll-section-wrapper">
+    <button class="scroll-arrow scroll-arrow-left" aria-label="Scroll left">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <div class="carousel-outer">
+      <div class="flex gap-6 overflow-x-auto snap-x pb-8 px-2 pt-6 -mt-6 cert-carousel" data-purpose="certificate-scroll">
+        <div class="cert-carousel-track">
+  
+          <div class="cert-card cert-ghost min-w-[280px] md:min-w-[320px] snap-item glass glass-rounded p-6" style="border-left: 4px solid var(--glass-border);">
+            <div class="skel skel-cert-org mb-2"></div>
+            <div class="skel skel-cert-title mb-3"></div>
+            <div class="skel skel-cert-desc mb-2"></div>
+            <div class="skel skel-cert-desc mb-4"></div>
+            <div class="skel skel-cert-date"></div>
+          </div>
+  
+          <div class="cert-card cert-ghost min-w-[280px] md:min-w-[320px] snap-item glass glass-rounded p-6" style="border-left: 4px solid var(--glass-border);">
+            <div class="skel skel-cert-org mb-2"></div>
+            <div class="skel skel-cert-title mb-3"></div>
+            <div class="skel skel-cert-desc mb-2"></div>
+            <div class="skel skel-cert-desc mb-4"></div>
+            <div class="skel skel-cert-date"></div>
+          </div>
+  
+          <div class="cert-card cert-ghost min-w-[280px] md:min-w-[320px] snap-item glass glass-rounded p-6" style="border-left: 4px solid var(--glass-border);">
+            <div class="skel skel-cert-org mb-2"></div>
+            <div class="skel skel-cert-title mb-3"></div>
+            <div class="skel skel-cert-desc mb-2"></div>
+            <div class="skel skel-cert-desc mb-4"></div>
+            <div class="skel skel-cert-date"></div>
+          </div>
+  
+          <div class="cert-card cert-real min-w-[280px] md:min-w-[320px] snap-item glass glass-rounded p-6" style="border-left: 4px solid var(--accent-1);">
+            <div class="text-xs text-[var(--accent-1)] font-bold mb-2 roboto-mono tracking-widest">COMING SOON</div>
+            <h4 class="text-lg font-bold mb-2 text-[var(--text)]">First Certificate</h4>
+            <p class="text-[var(--text-muted)] text-sm mb-4">Currently working towards earning certifications. Check back soon.</p>
+            <div class="text-[10px] text-[var(--text-muted)]">Issued: —</div>
+          </div>
+  
+          <div class="cert-card cert-ghost min-w-[280px] md:min-w-[320px] snap-item glass glass-rounded p-6" style="border-left: 4px solid var(--glass-border);">
+            <div class="skel skel-cert-org mb-2"></div>
+            <div class="skel skel-cert-title mb-3"></div>
+            <div class="skel skel-cert-desc mb-2"></div>
+            <div class="skel skel-cert-desc mb-4"></div>
+            <div class="skel skel-cert-date"></div>
+          </div>
+  
+          <div class="cert-card cert-ghost min-w-[280px] md:min-w-[320px] snap-item glass glass-rounded p-6" style="border-left: 4px solid var(--glass-border);">
+            <div class="skel skel-cert-org mb-2"></div>
+            <div class="skel skel-cert-title mb-3"></div>
+            <div class="skel skel-cert-desc mb-2"></div>
+            <div class="skel skel-cert-desc mb-4"></div>
+            <div class="skel skel-cert-date"></div>
+          </div>
+  
+          <div class="cert-card cert-ghost min-w-[280px] md:min-w-[320px] snap-item glass glass-rounded p-6" style="border-left: 4px solid var(--glass-border);">
+            <div class="skel skel-cert-org mb-2"></div>
+            <div class="skel skel-cert-title mb-3"></div>
+            <div class="skel skel-cert-desc mb-2"></div>
+            <div class="skel skel-cert-desc mb-4"></div>
+            <div class="skel skel-cert-date"></div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <button class="scroll-arrow scroll-arrow-right" aria-label="Scroll right">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+</section>
+<!-- END: Certificates -->
+<!-- BEGIN: Footer -->
+<footer class="py-6 border-t border-[var(--divider)] text-center relative z-10">
+  <p class="text-[var(--text-muted)] text-sm">
+    © 2026 Neel Shinde. Build Different.
+  </p>
+</footer>
+<!-- END: Footer -->
+</main>
+<!-- END: Content Area -->
+<!-- END: Main Layout Wrapper -->
+<!-- BEGIN: Project Modal -->
+<dialog class="glass glass-rounded w-[90%] max-w-2xl p-0 text-[var(--text)]" id="project-modal">
+<div class="relative">
+<button class="absolute top-4 right-4 z-10 p-2 glass rounded-full hover:shadow-[0_0_12px_var(--shadow)] transition-all" onclick="closeModal()">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="p-8" id="modal-content">
+<img alt="Preview" class="w-full h-64 object-cover rounded-xl mb-8 border border-[var(--glass-border)]" id="modal-img" src=""/>
+<h2 class="text-3xl font-black mb-4" id="modal-title"></h2>
+<p class="text-[var(--text-muted)] leading-relaxed mb-8" id="modal-desc"></p>
+<div class="flex gap-4">
+<a class="glass px-8 py-3 rounded-full font-semibold text-sm text-[var(--accent-1)] border border-[var(--accent-1)] hover:shadow-[0_0_20px_var(--shadow)] transition-all duration-300 hover:scale-105" href="#">Live Demo</a>
+<a class="glass px-8 py-3 rounded-full font-semibold text-sm text-[var(--text-muted)] border border-[var(--glass-border)] hover:shadow-[0_0_20px_var(--shadow)] transition-all duration-300 hover:scale-105" href="#">Source Code</a>
+</div>
+</div>
+</div>
+</dialog>
+<!-- END: Project Modal -->
+<!-- BEGIN: Scripts -->
+<script src="script.js"></script>
+<!-- END: Scripts -->
+</body></html>
