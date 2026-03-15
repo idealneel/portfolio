@@ -525,6 +525,8 @@ if (modal) {
   ring.id = 'cursor-ring';
   document.body.appendChild(dot);
   document.body.appendChild(ring);
+  dot.style.opacity = '0';
+  ring.style.opacity = '0';
 
   let mouseX = 0, mouseY = 0;
   let ringX  = 0, ringY  = 0;
@@ -536,6 +538,8 @@ if (modal) {
     mouseY = e.clientY;
     dot.style.left = mouseX + 'px';
     dot.style.top  = mouseY + 'px';
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
   });
 
   // Smooth ring follow with lerp
