@@ -91,7 +91,23 @@ if (typewriterElement) {
     elements.forEach(el => observer.observe(el));
   };
   
-  observe();
+    if (document.readyState !== 'loading') {
+      observe();
+    } else {
+      document.addEventListener('DOMContentLoaded', observe);
+    }
+
+    // Fallback for skill chips: force visible after 1.5s if still hidden
+    setTimeout(() => {
+      document.querySelectorAll('.skill-chip').forEach((chip, i) => {
+        if (chip.style.opacity === '0') {
+          setTimeout(() => {
+            chip.style.opacity = '1';
+            chip.style.transform = 'translateY(0)';
+          }, i * 100);
+        }
+      });
+    }, 1500);
 
   const chips = document.querySelectorAll('.skill-chip');
   if (chips.length > 0) {
@@ -256,7 +272,7 @@ if (revealElements.length > 0) {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add('visible');
-          }, index * 100);
+          }, 200 + (index * 100));
           observerContact.unobserve(entry.target);
         }
       });
@@ -605,6 +621,8 @@ if (modal) {
   const magnets = document.querySelectorAll('a, button:not([disabled])');
   magnets.forEach(element => {
     element.addEventListener('mousemove', (e) => {
+      const isHeroCard = element.closest('#hero');
+      if (isHeroCard) return;
       if (element.closest('.tilt-card')) return;
       const rect = element.getBoundingClientRect();
       const dx = e.clientX - (rect.left + rect.width / 2);
@@ -733,3 +751,98 @@ if (modal) {
   window.addEventListener('scroll', updateProgress, { passive: true });
   updateProgress(); // Initial set
 })();
+
+// === NAVBAR LOGO GLITCH ===
+(function() {
+  const logo = document.querySelector('#top-nav .font-bold.text-xl');
+  if (!logo) return;
+
+  function triggerGlitch() {
+    logo.classList.add('logo-glitch');
+    setTimeout(() => {
+      logo.classList.remove('logo-glitch');
+    }, 400);
+  }
+
+  // Initial glitch after load
+  setTimeout(triggerGlitch, 1000);
+
+  // Repeat every 8 seconds
+  setInterval(triggerGlitch, 8000);
+})();
+
+// === CARD SPOTLIGHT EFFECT ===
+(function() {
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+
+  function initSpotlight() {
+    const cards = document.querySelectorAll('.glass.glass-rounded');
+    cards.forEach(card => {
+      card.classList.add('spotlight-card');
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', x + '%');
+        card.style.setProperty('--mouse-y', y + '%');
+      });
+    });
+  }
+
+  if (document.readyState !== 'loading') {
+    initSpotlight();
+  } else {
+    document.addEventListener('DOMContentLoaded', initSpotlight);
+  }
+})();
+
+// === STATS COUNTER ===
+(function() {
+  const counters = document.querySelectorAll('[data-count]');
+  if (!counters.length) return;
+
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-count'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1500;
+    let startTime = null;
+
+    function frame(currentTime) {
+      if (!startTime) startTime = currentTime;
+      const progress = currentTime - startTime;
+      const t = Math.min(progress / duration, 1);
+      
+      // easeOutQuad
+      const value = Math.round(target * (t * (2 - t)));
+      el.textContent = value + suffix;
+
+      if (t < 1) {
+        requestAnimationFrame(frame);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  if (!window.IntersectionObserver) {
+    counters.forEach(el => {
+      const target = el.getAttribute('data-count');
+      const suffix = el.getAttribute('data-suffix') || '';
+      el.textContent = target + suffix;
+    });
+    return;
+  }
+
+  const statsRow = document.getElementById('stats-row');
+  if (statsRow) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        counters.forEach(animateCounter);
+        observer.unobserve(statsRow);
+      }
+    }, { threshold: 0.5 });
+    observer.observe(statsRow);
+  }
+})();
+

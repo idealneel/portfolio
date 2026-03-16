@@ -937,3 +937,107 @@ a, button {
   transition: width 50ms linear;
   pointer-events: none;
 }
+
+/* === NAVBAR LOGO GLITCH EFFECT === */
+@keyframes glitchShift {
+  0%   { 
+    text-shadow: none; 
+    transform: translate(0);
+  }
+  10%  { 
+    text-shadow: -2px 0 var(--accent-2), 
+                  2px 0 var(--accent-1);
+    transform: translate(-1px, 0);
+  }
+  20%  { 
+    text-shadow: 2px 0 var(--accent-1), 
+                 -2px 0 var(--accent-2);
+    transform: translate(1px, 0);
+  }
+  30%  { 
+    text-shadow: none;
+    transform: translate(0);
+  }
+  35%  { 
+    text-shadow: -1px 0 var(--accent-1);
+    transform: translate(1px, 1px);
+  }
+  40%  { 
+    text-shadow: none;
+    transform: translate(0);
+  }
+  100% { 
+    text-shadow: none; 
+    transform: translate(0);
+  }
+}
+
+.logo-glitch {
+  animation: glitchShift 0.4s ease-in-out;
+}
+
+/* === CARD SPOTLIGHT EFFECT === */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(108, 99, 255, 0.10) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+/* === ROTATING BORDER EFFECT === */
+@keyframes borderRotate {
+  0%   { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.glass.glass-rounded {
+  --border-angle: 0deg;
+}
+
+.glass.glass-rounded:hover {
+  animation: borderRotate 3s linear infinite;
+  border-image: none;
+  border: 1px solid transparent;
+  background-image: 
+    linear-gradient(var(--glass-bg), var(--glass-bg)),
+    conic-gradient(
+      from var(--border-angle),
+      var(--accent-1) 0%,
+      var(--accent-2) 25%,
+      transparent 50%,
+      var(--accent-1) 75%,
+      var(--accent-2) 100%
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.glass.glass-rounded:not(:hover) {
+  animation: none;
+  background-image: none;
+  border: 1px solid var(--glass-border);
+}
