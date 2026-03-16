@@ -52,7 +52,11 @@ if (typewriterElement) {
       typewriterElement.classList.add('cursor-blink');
     }
   }
-  document.addEventListener('DOMContentLoaded', type);
+  if (document.readyState !== 'loading') {
+    type();
+  } else {
+    document.addEventListener('DOMContentLoaded', type);
+  }
 }
 
 // Scroll Animations (Index)
@@ -384,7 +388,7 @@ if (modal) {
     zen: {
       title: "ZenFlow App",
       desc: "Focusing on user well-being. ZenFlow uses native device capabilities to track focus sessions and provide haptic feedback during meditation. Built with React Native, it features a minimal UI that reduces cognitive load and promotes calm usage.",
-      img: "https://placehold.co/600x400/1a1a1a/text-muted?text=Mobile+App"
+      img: "https://placehold.co/600x400/1a1a1a/8A8AB0?text=Mobile+App"
     },
     legacy: {
       title: "Legacy Portfolio",
