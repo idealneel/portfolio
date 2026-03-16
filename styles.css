@@ -924,7 +924,7 @@ a, button {
   position: fixed;
   top: 60px;
   left: 0;
-  height: 2px;
+  height: 1px;
   width: 0%;
   z-index: 49;
   background: linear-gradient(
@@ -932,32 +932,12 @@ a, button {
     var(--accent-1) 0%, 
     var(--accent-2) 100%
   );
-  box-shadow: 0 0 8px var(--accent-1),
-              0 0 16px rgba(108, 99, 255, 0.4);
-  transition: width 50ms linear;
-}
-
-.scrambling {
-  opacity: 1;
-}
-
-#scroll-progress {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  height: 2px;
-  width: 0%;
-  z-index: 49;
-  background: linear-gradient(
-    90deg, 
-    var(--accent-1) 0%, 
-    var(--accent-2) 100%
-  );
-  box-shadow: 0 0 8px var(--accent-1),
-              0 0 16px rgba(108, 99, 255, 0.4);
+  box-shadow: 0 0 6px var(--accent-1),
+              0 0 12px rgba(108, 99, 255, 0.3);
   transition: width 50ms linear;
   pointer-events: none;
 }
+
 
 
 /* === CARD SPOTLIGHT EFFECT === */
@@ -1034,12 +1014,12 @@ a, button {
     content: '';
     position: absolute;
     right: 0;
-    top: -2px;
-    width: 6px;
-    height: 6px;
+    top: -1.5px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background: var(--accent-1);
-    box-shadow: 0 0 8px var(--accent-1),
-                0 0 16px rgba(108, 99, 255, 0.6);
+    box-shadow: 0 0 6px var(--accent-1),
+                0 0 12px rgba(108, 99, 255, 0.5);
   }
 
