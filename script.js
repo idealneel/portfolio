@@ -687,61 +687,58 @@ if (modal) {
 (function() {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
 
-  function scrambleText(element) {
-    // Skip if element has child elements (spans, etc.)
-    // EXCEPT if all children are just style spans with no
-    // nested elements - handle gradient-text spans specially
-    const original = element.getAttribute('data-scramble-text') 
-                     || element.textContent.trim();
-    if (!original || original.length === 0) return;
-    if (element.closest('#skeleton-loader')) return;
+  function scramble(element) {
+    const original = element.getAttribute('data-scramble');
+    if (!original) return;
 
     let frame = 0;
-    const totalFrames = 18;
+    const totalFrames = 20;
     const length = original.length;
 
     const interval = setInterval(() => {
-      const resolvedCount = Math.floor((frame / totalFrames) 
-                            * length);
+      const resolved = Math.floor((frame / totalFrames) * length);
       let output = '';
       for (let i = 0; i < length; i++) {
-        if (
-          i < resolvedCount || 
-          original[i] === ' ' || 
-          original[i] === '·' ||
-          original[i] === '.' ||
-          original[i] === '\n'
-        ) {
+        if (i < resolved || original[i] === ' ' || 
+            original[i] === '·') {
           output += original[i];
         } else {
-          output += chars[Math.floor(Math.random() 
-                    * chars.length)];
+          output += chars[
+            Math.floor(Math.random() * chars.length)
+          ];
         }
       }
 
-      // For plain text elements
-      if (element.children.length === 0) {
-        element.textContent = output;
+      // Update only the visible text, preserving child elements
+      // Find the text node or the inner span
+      const innerSpan = element.querySelector('.gradient-text');
+      if (innerSpan) {
+        innerSpan.textContent = output;
       } else {
-        // For elements with a single gradient-text span child
-        // update only the span's text
-        const span = element.querySelector('.gradient-text, span');
-        if (span && element.children.length === 1) {
-          span.textContent = output;
+        // Replace only text nodes, not child elements
+        const textNodes = Array.from(element.childNodes)
+          .filter(n => n.nodeType === 3);
+        if (textNodes.length > 0) {
+          textNodes[textNodes.length - 1].textContent = 
+            ' ' + output;
+        } else {
+          element.textContent = output;
         }
       }
 
       if (frame >= totalFrames) {
         clearInterval(interval);
-        // Restore original
-        if (element.children.length === 0) {
-          element.textContent = original;
+        // Restore original text properly
+        if (innerSpan) {
+          innerSpan.textContent = original;
         } else {
-          const span = element.querySelector(
-            '.gradient-text, span'
-          );
-          if (span && element.children.length === 1) {
-            span.textContent = original;
+          const textNodes = Array.from(element.childNodes)
+            .filter(n => n.nodeType === 3);
+          if (textNodes.length > 0) {
+            textNodes[textNodes.length - 1].textContent = 
+              '\n        ' + original + '\n      ';
+          } else {
+            element.textContent = original;
           }
         }
       }
@@ -749,63 +746,20 @@ if (modal) {
     }, 35);
   }
 
-  if (!window.IntersectionObserver) return;
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        scrambleText(entry.target);
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.25 });
-
   function initScramble() {
-    // 1. Section headings: ABOUT ME, MY WORK heading span
-    document.querySelectorAll(
-      'h1.gradient-text, h2.gradient-text'
-    ).forEach(el => {
-      // Store original text on the gradient span
-      const span = el.querySelector('.gradient-text') || el;
-      if (span.textContent.trim()) observer.observe(el);
-    });
+    if (!window.IntersectionObserver) return;
 
-    // 2. Plain h2 section labels (ABOUT ME, etc.)
-    // These have a span accent line + text node - skip them
-    // Instead target the text-only uppercase labels
-    document.querySelectorAll('h1.text-8xl').forEach(el => {
-      // 404 page number
-      if (el.children.length === 0) observer.observe(el);
-    });
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          scramble(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
 
-    // 3. Card titles on projects page
-    document.querySelectorAll(
-      '.project-card h3, .cert-card h4'
-    ).forEach(el => {
-      if (el.children.length === 0) observer.observe(el);
-    });
-
-    // 4. Contact card titles
-    document.querySelectorAll('#cards h3').forEach(el => {
-      if (el.children.length === 0) observer.observe(el);
-    });
-
-    // 5. "My Work" h1 - has a span.gradient-text child
-    document.querySelectorAll(
-      'header[data-purpose="page-header"] h1'
-    ).forEach(el => {
-      const span = el.querySelector('.gradient-text');
-      if (span) {
-        span.setAttribute('data-scramble-text', 
-          span.textContent.trim());
-        observer.observe(el);
-      }
-    });
-
-    // 6. Footer text
-    document.querySelectorAll('footer p').forEach(el => {
-      if (el.children.length === 0) observer.observe(el);
-    });
+    document.querySelectorAll('[data-scramble]')
+      .forEach(el => observer.observe(el));
   }
 
   if (document.readyState !== 'loading') {
