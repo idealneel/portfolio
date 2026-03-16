@@ -685,41 +685,72 @@ if (modal) {
 
 // === TEXT SCRAMBLE EFFECT ===
 (function() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
 
   function scrambleText(element) {
-    if (element.children.length > 0) return;
+    // Skip if element has child elements (spans, etc.)
+    // EXCEPT if all children are just style spans with no
+    // nested elements - handle gradient-text spans specially
+    const original = element.getAttribute('data-scramble-text') 
+                     || element.textContent.trim();
+    if (!original || original.length === 0) return;
     if (element.closest('#skeleton-loader')) return;
-    const original = element.textContent;
-    element.classList.add('scrambling');
+
     let frame = 0;
-    const totalFrames = 20;
+    const totalFrames = 18;
     const length = original.length;
-    
+
     const interval = setInterval(() => {
+      const resolvedCount = Math.floor((frame / totalFrames) 
+                            * length);
       let output = '';
-      const resolvedCount = Math.floor((frame / totalFrames) * length);
-      
       for (let i = 0; i < length; i++) {
-        if (i < resolvedCount || original[i] === ' ' || original[i] === '\n') {
+        if (
+          i < resolvedCount || 
+          original[i] === ' ' || 
+          original[i] === '·' ||
+          original[i] === '.' ||
+          original[i] === '\n'
+        ) {
           output += original[i];
         } else {
-          output += chars[Math.floor(Math.random() * chars.length)];
+          output += chars[Math.floor(Math.random() 
+                    * chars.length)];
         }
       }
-      element.textContent = output;
-      
+
+      // For plain text elements
+      if (element.children.length === 0) {
+        element.textContent = output;
+      } else {
+        // For elements with a single gradient-text span child
+        // update only the span's text
+        const span = element.querySelector('.gradient-text, span');
+        if (span && element.children.length === 1) {
+          span.textContent = output;
+        }
+      }
+
       if (frame >= totalFrames) {
         clearInterval(interval);
-        element.textContent = original;
-        element.classList.remove('scrambling');
+        // Restore original
+        if (element.children.length === 0) {
+          element.textContent = original;
+        } else {
+          const span = element.querySelector(
+            '.gradient-text, span'
+          );
+          if (span && element.children.length === 1) {
+            span.textContent = original;
+          }
+        }
       }
       frame++;
-    }, 40);
+    }, 35);
   }
 
-  // Define intersection observer
   if (!window.IntersectionObserver) return;
+
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -727,11 +758,61 @@ if (modal) {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.25 });
 
-  // Observe matching headers (excluding h1.text-4xl to avoid typewriter conflict)
-  const targets = document.querySelectorAll('h2.text-3xl:not(:has(span))');
-  targets.forEach(el => observer.observe(el));
+  function initScramble() {
+    // 1. Section headings: ABOUT ME, MY WORK heading span
+    document.querySelectorAll(
+      'h1.gradient-text, h2.gradient-text'
+    ).forEach(el => {
+      // Store original text on the gradient span
+      const span = el.querySelector('.gradient-text') || el;
+      if (span.textContent.trim()) observer.observe(el);
+    });
+
+    // 2. Plain h2 section labels (ABOUT ME, etc.)
+    // These have a span accent line + text node - skip them
+    // Instead target the text-only uppercase labels
+    document.querySelectorAll('h1.text-8xl').forEach(el => {
+      // 404 page number
+      if (el.children.length === 0) observer.observe(el);
+    });
+
+    // 3. Card titles on projects page
+    document.querySelectorAll(
+      '.project-card h3, .cert-card h4'
+    ).forEach(el => {
+      if (el.children.length === 0) observer.observe(el);
+    });
+
+    // 4. Contact card titles
+    document.querySelectorAll('#cards h3').forEach(el => {
+      if (el.children.length === 0) observer.observe(el);
+    });
+
+    // 5. "My Work" h1 - has a span.gradient-text child
+    document.querySelectorAll(
+      'header[data-purpose="page-header"] h1'
+    ).forEach(el => {
+      const span = el.querySelector('.gradient-text');
+      if (span) {
+        span.setAttribute('data-scramble-text', 
+          span.textContent.trim());
+        observer.observe(el);
+      }
+    });
+
+    // 6. Footer text
+    document.querySelectorAll('footer p').forEach(el => {
+      if (el.children.length === 0) observer.observe(el);
+    });
+  }
+
+  if (document.readyState !== 'loading') {
+    initScramble();
+  } else {
+    document.addEventListener('DOMContentLoaded', initScramble);
+  }
 })();
 
 // === SCROLL PROGRESS BAR ===
