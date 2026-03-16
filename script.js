@@ -642,7 +642,6 @@ if (modal) {
 
 // === STAR CANVAS BACKGROUND ===
 (function() {
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   const canvas = document.getElementById('star-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');

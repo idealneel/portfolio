@@ -31,6 +31,16 @@ body {
   margin: 0;
 }
 
+::selection {
+  background: rgba(108, 99, 255, 0.3);
+  color: var(--text);
+}
+
+::-moz-selection {
+  background: rgba(108, 99, 255, 0.3);
+  color: var(--text);
+}
+
 .roboto-mono {
   font-family: 'Roboto Mono', monospace;
 }
@@ -175,11 +185,14 @@ body {
 
 /* === PROJECTS PAGE === */
 .project-card, .cert-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.3s ease;
 }
 .project-card:hover, .cert-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(79, 142, 247, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(108, 99, 255, 0.15),
+              0 4px 16px rgba(0, 0, 0, 0.3);
 }
 .card--hidden {
   opacity: 0 !important;
@@ -910,11 +923,6 @@ a, button {
   opacity: 0.5;
 }
 
-@media (hover: none), (pointer: coarse) {
-  #star-canvas {
-    display: none !important;
-  }
-}
 
 .scrambling {
   opacity: 1;
@@ -984,6 +992,7 @@ a, button {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     font-size: 10px;
+    width: fit-content;
   }
 
   /* Glass pill on footer text */
@@ -1022,4 +1031,3 @@ a, button {
     box-shadow: 0 0 6px var(--accent-1),
                 0 0 12px rgba(108, 99, 255, 0.5);
   }
-
