@@ -789,6 +789,7 @@ dialog::backdrop {
   box-shadow: 0 0 10px var(--accent-1),
               0 0 20px var(--accent-1),
               0 0 40px rgba(108, 99, 255, 0.4);
+  opacity: 0;
 }
 
 #cursor-ring {
@@ -804,6 +805,7 @@ dialog::backdrop {
   transform: translate(-50%, -50%);
   transition: width 300ms ease, height 300ms ease,
               border-color 300ms ease, opacity 300ms ease;
+  opacity: 0;
 }
 
 /* Cursor hover state  expands on clickable elements */

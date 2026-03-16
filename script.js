@@ -537,17 +537,20 @@ if (modal) {
 
   // Track mouse position
   document.addEventListener('mousemove', (e) => {
-    if (!started) {
-      started = true;
-      ringX = e.clientX;
-      ringY = e.clientY;
-      dot.style.opacity  = '1';
-      ring.style.opacity = '1';
-    }
     mouseX = e.clientX;
     mouseY = e.clientY;
     dot.style.left = mouseX + 'px';
     dot.style.top  = mouseY + 'px';
+
+    // Reveal cursor only on first movement
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+
+    if (!started) {
+      started = true;
+      ringX = e.clientX;
+      ringY = e.clientY;
+    }
   });
 
   // Smooth ring follow with lerp
