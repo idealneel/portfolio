@@ -1019,3 +1019,18 @@ a, button {
     box-shadow: 0 0 6px var(--accent-1),
                 0 0 12px rgba(108, 99, 255, 0.5);
   }
+
+.skill-chip {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  transition: box-shadow 300ms ease, 
+              border-color 300ms ease;
+}
+
+.skill-chip:hover {
+  box-shadow: 0 0 16px rgba(108, 99, 255, 0.3);
+  border-color: var(--accent-1);
+}
