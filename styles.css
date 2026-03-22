@@ -194,6 +194,13 @@ body {
   box-shadow: 0 16px 48px rgba(108, 99, 255, 0.15),
               0 4px 16px rgba(0, 0, 0, 0.3);
 }
+
+.glass.glass-rounded.spotlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(108, 99, 255, 0.20),
+              0 0 0 1px rgba(108, 99, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
 .card--hidden {
   opacity: 0 !important;
   pointer-events: none;
@@ -1128,4 +1135,35 @@ a, button {
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+.project-date-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'Roboto Mono', monospace;
+  background: rgba(108, 99, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.project-date-badge:hover {
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(108, 99, 255, 0.15);
+  border-color: rgba(108, 99, 255, 0.3);
+}
+
+.glass.px-6.py-2.rounded-full:hover {
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+a[href*="github"]:hover {
+  color: var(--text) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
