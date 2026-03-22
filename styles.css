@@ -1158,3 +1158,18 @@ a[href*="github"]:hover {
   color: var(--text) !important;
   border-color: rgba(255, 255, 255, 0.3) !important;
 }
+
+/* Force static buttons - no hover movement */
+.glass.px-6.py-2\.5.rounded-full {
+  transition: none !important;
+  transform: none !important;
+}
+
+.glass.px-6.py-2\.5.rounded-full:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.glass.px-6.py-2\.5.rounded-full:active {
+  transform: none !important;
+}
