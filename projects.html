@@ -47,25 +47,31 @@
   <div class="skel-body">
     <div class="skel skel-heading"></div>
     <div class="skel skel-proj-sub"></div>
-    <div class="skel-proj-grid">
-      <!-- Card 1: project with thumbnail -->
-      <div class="skel-card">
-        <div class="skel skel-card-thumb"></div>
-        <div class="skel-card-body">
-          <div class="skel skel-card-tag"></div>
-          <div class="skel skel-card-title"></div>
-          <div class="skel skel-card-desc1"></div>
-          <div class="skel skel-card-desc2"></div>
-          <div class="skel skel-card-btn"></div>
+    
+    <!-- Horizontal Project Card 1 -->
+    <div class="skel-horizontal-card">
+      <div class="skel-h-img"></div>
+      <div class="skel-h-content">
+        <div class="skel skel-h-title"></div>
+        <div class="skel skel-h-desc1"></div>
+        <div class="skel skel-h-desc2"></div>
+        <div class="skel-h-buttons">
+          <div class="skel skel-h-btn"></div>
+          <div class="skel skel-h-btn"></div>
         </div>
       </div>
-      <!-- Card 2: certificate, no thumbnail -->
-      <div class="skel-card skel-cert-card">
-        <div class="skel-card-body">
-          <div class="skel skel-card-tag"></div>
-          <div class="skel skel-card-title"></div>
-          <div class="skel skel-card-desc1"></div>
-          <div class="skel skel-card-desc2"></div>
+    </div>
+
+    <!-- Horizontal Project Card 2 -->
+    <div class="skel-horizontal-card">
+      <div class="skel-h-img"></div>
+      <div class="skel-h-content">
+        <div class="skel skel-h-title"></div>
+        <div class="skel skel-h-desc1"></div>
+        <div class="skel skel-h-desc2"></div>
+        <div class="skel-h-buttons">
+          <div class="skel skel-h-btn"></div>
+          <div class="skel skel-h-btn"></div>
         </div>
       </div>
     </div>
@@ -120,7 +126,10 @@
     <!-- PROJECT 1 - CAFE MADE IN 2020 -->
     <article class="glass glass-rounded spotlight-card grid grid-cols-1 md:grid-cols-[380px_1fr] overflow-hidden min-h-[220px]">
       <div class="h-64 md:h-full" style="background: #1a1a1a;">
-        <img src="https://i.ibb.co/Lh96s2bP/Screenshot-2026-03-22-211426.png" alt="Cafe Made In 2020" style="width:100%; height:100%; object-fit:cover; object-position:top;">
+        <div class="relative w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]">
+          <div class="absolute inset-0 skeleton-shimmer"></div>
+          <img src="https://i.ibb.co/Lh96s2bP/Screenshot-2026-03-22-211426.png" alt="Cafe Made In 2020" style="width:100%; height:100%; object-fit:contain; object-position:center; background:#0D0D0D;" onload="this.parentElement.querySelector('.skeleton-shimmer').style.display='none';">
+        </div>
       </div>
       <div class="p-5 relative">
         <div style="position:absolute; top:1.5rem; right:1.5rem; font-size:9px; color:rgba(255,255,255,0.4); font-family:monospace;">FEB 2026</div>
@@ -142,7 +151,10 @@
     <!-- PROJECT 2 - PUSH · PULL · LEGS -->
     <article class="glass glass-rounded spotlight-card grid grid-cols-1 md:grid-cols-[380px_1fr] overflow-hidden min-h-[220px]">
       <div class="h-64 md:h-full" style="background: #1a1a1a;">
-        <img src="https://i.ibb.co/ccYQg7FV/Screenshot-2026-03-22-211445.png" alt="Push Pull Legs" style="width:100%; height:100%; object-fit:cover; object-position:top;">
+        <div class="relative w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]">
+          <div class="absolute inset-0 skeleton-shimmer"></div>
+          <img src="https://i.ibb.co/ccYQg7FV/Screenshot-2026-03-22-211445.png" alt="Push Pull Legs" style="width:100%; height:100%; object-fit:contain; object-position:center; background:#0D0D0D;" onload="this.parentElement.querySelector('.skeleton-shimmer').style.display='none';">
+        </div>
       </div>
       <div class="p-5 relative">
         <div style="position:absolute; top:1.5rem; right:1.5rem; font-size:9px; color:rgba(255,255,255,0.4); font-family:monospace;">MAR 2026</div>
