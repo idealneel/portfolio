@@ -1034,3 +1034,13 @@ a, button {
   box-shadow: 0 0 16px rgba(108, 99, 255, 0.3);
   border-color: var(--accent-1);
 }
+
+#top-nav a {
+  transform: none !important;
+  transition: color 200ms ease !important;
+}
+
+#top-nav a:hover {
+  transform: none !important;
+}
+
