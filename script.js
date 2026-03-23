@@ -561,38 +561,31 @@ if (modal) {
   dot.style.opacity = '0';
   ring.style.opacity = '0';
 
-  let mouseX = -1000, mouseY = -1000;
-  let ringX  = -1000, ringY  = -1000;
-  let rafId;
   let started = false;
+  let cursorTimeout;
 
   // Track mouse position
   document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top  = mouseY + 'px';
-
     // Reveal cursor only on first movement
-    dot.style.opacity = '1';
-    ring.style.opacity = '1';
-
     if (!started) {
       started = true;
-      ringX = e.clientX;
-      ringY = e.clientY;
+      dot.style.opacity = '1';
+      ring.style.opacity = '1';
     }
-  });
 
-  // Smooth ring follow with lerp
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.20;
-    ringY += (mouseY - ringY) * 0.20;
-    ring.style.left = ringX + 'px';
-    ring.style.top  = ringY + 'px';
-    rafId = requestAnimationFrame(animateRing);
-  }
-  animateRing();
+    if (cursorTimeout) return;
+    cursorTimeout = setTimeout(() => {
+      cursorTimeout = null;
+      const dotEl = document.getElementById('cursor-dot');
+      const ringEl = document.getElementById('cursor-ring');
+      if (dotEl && ringEl) {
+        dotEl.style.left = e.clientX + 'px';
+        dotEl.style.top = e.clientY + 'px';
+        ringEl.style.left = e.clientX + 'px';
+        ringEl.style.top = e.clientY + 'px';
+      }
+    }, 16); // ~60fps
+  });
 
   // Hover state on interactive elements
   const interactives = 'a, button, [onclick], input, textarea, label, select';
